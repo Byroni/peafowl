@@ -5,16 +5,19 @@ type Peafowl interface {
 	SetDirectory(path string)
 
 	// SetDiscordChannel Set the name of the discord channel
-	SetDiscordChannel(name string)
+	//SetDiscordChannel(name string)
 
 	// SetUser Set the user that is posting the clip
 	SetUser(name string)
 
+	// SetWebhookURL Set the url that is used to post messages
+	SetWebhookURL(url string)
+
 	// GetDirectory returns specified directory name
 	GetDirectory() string
 
-	// GetDiscordChannel returns specified discord channel
-	GetDiscordChannel() string
+	// GetWebhookURL returns specified discord channel
+	GetWebhookURL() string
 
 	// GetUser returns specified user
 	GetUser() string
@@ -29,5 +32,5 @@ type Peafowl interface {
 	Upload()
 
 	// Publish will publish an existing uploaded file to the channel set with SetDiscordChannel
-	Publish(message string)
+	Publish(message string) error
 }

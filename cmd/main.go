@@ -21,15 +21,7 @@ func main() {
   database.Open()
   defer database.Close()
 
-	// Check if configuration already exists
-
-
-  // Set configuration
-  // TODO: This should probably be set in an exposed peafowlService method
-  discordService.SetWebhookURL("https://discord.com/api/webhooks/870815898993295371/RL07y0NzWuZumQ4VWUgJ121WVJ6E9iiEb0t_ffGgrkgUGKe0RHtMGhC80Lr5Jp9NEw41")
-
 	peafowlService = peafowl.New(discordService, database)
 
-	peafowlService.SetUser("Byroni")
-	peafowlService.Publish("https://gfycat.com/weightycriminalfairyfly-overwatch-blizzard-entertainment")
+	peafowlService.Publish("https://gfycat.com/weightycriminalfairfly-overwatch-blizzard-entertainment")
 }

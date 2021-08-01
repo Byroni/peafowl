@@ -1,32 +1,19 @@
 package discord
 
 import (
-	"fmt"
+	log "github.com/sirupsen/logrus"
 	"net/http"
 	"net/url"
 )
 
 type Service struct {
 	webhookURL string
-	user string
 }
 
-type Config struct {
-	WebhookUrl string
-	User string
-}
 
 // New creates a new empty service
 func New() *Service {
 	return &Service{}
-}
-
-// NewWithConfig creates a service with loaded configuration
-func NewWithConfig(config Config) *Service {
-	return &Service{
-		webhookURL: config.WebhookUrl,
-		user: config.User,
-	}
 }
 
 // SetWebhookURL Sets the URL to use for sending messages.
@@ -40,7 +27,7 @@ func (s *Service) PublishMessage(message string) error {
 		"content": {message},
 	})
 	if err != nil {
-		fmt.Println("Something went wrong")
+		log.Error(err)
 		return err
 	}
 	defer resp.Body.Close()

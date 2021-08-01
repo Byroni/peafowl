@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/byroni/peafowl/ports"
 	tea "github.com/charmbracelet/bubbletea"
+	log "github.com/sirupsen/logrus"
 	"os"
 )
 
@@ -20,7 +21,7 @@ func New(service ports.Peafowl) {
 		peafowlService: service,
 	})
 	if err := p.Start(); err != nil {
-		fmt.Printf("Something went wrong: %v", err)
+		log.Error(err)
 		os.Exit(1)
 	}
 }
