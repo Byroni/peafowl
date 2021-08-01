@@ -29,5 +29,5 @@ type Peafowl interface {
 	Upload()
 
 	// Publish will publish an existing uploaded file to the channel set with SetDiscordChannel
-	Publish()
+	Publish(message string)
 }

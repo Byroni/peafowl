@@ -1,9 +1,12 @@
 package peafowl
 
-import "github.com/byroni/peafowl/ports"
+import (
+	"github.com/byroni/peafowl/ports"
+	"strings"
+)
 
 type peafowl struct {
-	chatService ports.ChatService
+	discord  ports.ChatService
 	database ports.Database
 	// gifService
 	directory string
@@ -14,11 +17,11 @@ type peafowl struct {
 // New Creates a new peafowl service
 func New(cs ports.ChatService, db ports.Database) *peafowl {
 	return &peafowl{
-		chatService: cs,
-		database: db,
-		directory: "./",
+		discord:        cs,
+		database:       db,
+		directory:      "./",
 		discordChannel: "clips",
-		user:      "Me",
+		user:           "Me",
 	}
 }
 
@@ -50,11 +53,18 @@ func (c *peafowl) List() {
 }
 
 func (c *peafowl) Upload() {
-
+	// Upload to Gfycat
 }
 
-func (c *peafowl) Publish() {
-	c.chatService.PublishMessage("Moooo")
+func (c *peafowl) Publish(message string) {
+	messageSlice := []string{
+		"@",
+		c.user,
+		"\n",
+		message,
+	}
+
+	c.discord.PublishMessage(strings.Join(messageSlice, ""))
 }
 
 func (c *peafowl) UploadAndPublish() {
