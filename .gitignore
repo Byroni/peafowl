@@ -205,3 +205,6 @@ $RECYCLE.BIN/
 
 # boltdb file
 peafowl.db
+
+# fyne resource folder
+*.app/
