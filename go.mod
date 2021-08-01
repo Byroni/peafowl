@@ -4,6 +4,8 @@ go 1.16
 
 require (
 	fyne.io/fyne/v2 v2.0.3
+	github.com/boltdb/bolt v1.3.1 // indirect
+	github.com/bwmarrin/discordgo v0.23.2 // indirect
 	github.com/charmbracelet/bubbletea v0.14.1
 	github.com/containerd/console v1.0.2 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect

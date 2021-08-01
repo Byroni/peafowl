@@ -1,18 +1,21 @@
 package peafowl
 
+import "github.com/byroni/peafowl/ports"
+
 type peafowl struct {
-	// discordService
+	chatService ports.ChatService
+	database ports.Database
 	// gifService
 	directory string
 	discordChannel string
 	user string
 }
 
-// TODO: Import dependencies here\
-
 // New Creates a new peafowl service
-func New() *peafowl {
+func New(cs ports.ChatService, db ports.Database) *peafowl {
 	return &peafowl{
+		chatService: cs,
+		database: db,
 		directory: "./",
 		discordChannel: "clips",
 		user:      "Me",
@@ -51,7 +54,7 @@ func (c *peafowl) Upload() {
 }
 
 func (c *peafowl) Publish() {
-
+	c.chatService.PublishMessage("Moooo")
 }
 
 func (c *peafowl) UploadAndPublish() {
